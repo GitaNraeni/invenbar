@@ -30,7 +30,7 @@ class BarangController extends Controller implements HasMiddleware
                 $query->where('nama_barang', 'like', '%' . $search . '%')
                     ->orWhere('kode_barang', 'like', '%' . $search . '%');
             })
-            ->latest()->paginate(3)->withQueryString();
+            ->latest()->paginate()->withQueryString();
 
         return view('barang.index', compact('barangs'));
     }

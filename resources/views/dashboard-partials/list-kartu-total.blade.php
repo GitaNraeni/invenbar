@@ -23,6 +23,13 @@
                 'color' => 'success',
             ],
             [
+                'text'  => 'TOTAL PEMINJAMAN',
+                'total' => $jumlahPeminjaman,
+                'route' => 'peminjaman.index',
+                'icon'  => 'bi-arrow-left-right',
+                'color' => 'warning',
+            ],
+            [
                 'text'  => 'TOTAL USER',
                 'total' => $jumlahUser,
                 'route' => 'user.index',
@@ -34,9 +41,7 @@
     @endphp
 
     @foreach ($kartus as $kartu)
-        @php
-            extract($kartu);
-        @endphp
+        @php extract($kartu); @endphp
 
         @isset($role)
             @role($role)

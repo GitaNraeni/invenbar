@@ -11,6 +11,7 @@
             @csrf
             @method('PUT')
 
+            {{-- Nama Peminjam --}}
             <div class="mb-3">
                 <label for="nama_peminjam" class="form-label">Nama Peminjam</label>
                 <input type="text" name="nama_peminjam" id="nama_peminjam"
@@ -21,33 +22,18 @@
                 @enderror
             </div>
 
+            {{-- Nomor Telepon --}}
             <div class="mb-3">
-                <label for="barang_id" class="form-label">Barang</label>
-                <select name="barang_id" id="barang_id"
-                    class="form-select @error('barang_id') is-invalid @enderror" required>
-                    <option value="">-- Pilih Barang --</option>
-                    @foreach ($barangs as $barang)
-                        <option value="{{ $barang->id }}"
-                            {{ old('barang_id', $peminjaman->barang_id) == $barang->id ? 'selected' : '' }}>
-                            {{ $barang->nama_barang }}
-                        </option>
-                    @endforeach
-                </select>
-                @error('barang_id')
+                <label for="no_telepon" class="form-label">Nomor Telepon</label>
+                <input type="text" name="no_telepon" id="no_telepon"
+                    class="form-control @error('no_telepon') is-invalid @enderror"
+                    value="{{ old('no_telepon', $peminjaman->no_telepon) }}" required>
+                @error('no_telepon')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
 
-            <div class="mb-3">
-                <label for="jumlah" class="form-label">Jumlah</label>
-                <input type="number" name="jumlah" id="jumlah" min="1"
-                    class="form-control @error('jumlah') is-invalid @enderror"
-                    value="{{ old('jumlah', $peminjaman->jumlah) }}" required>
-                @error('jumlah')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-            </div>
-
+            {{-- Tanggal Pinjam --}}
             <div class="mb-3">
                 <label for="tgl_pinjam" class="form-label">Tanggal Pinjam</label>
                 <input type="date" name="tgl_pinjam" id="tgl_pinjam"
@@ -58,7 +44,7 @@
                 @enderror
             </div>
 
-            {{-- kalau mau ubah status manual --}}
+            {{-- Status --}}
             <div class="mb-3">
                 <label for="status" class="form-label">Status</label>
                 <select name="status" id="status" class="form-select">

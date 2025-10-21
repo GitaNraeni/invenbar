@@ -8,6 +8,7 @@ use App\Models\Kategori;
 use App\Models\Lokasi;
 use App\Models\User;
 use App\Models\BarangKondisi;
+use App\Models\Peminjaman; // tambahkan ini
 
 class DashboardController extends Controller
 {
@@ -17,6 +18,7 @@ class DashboardController extends Controller
         $jumlahKategori = Kategori::count();
         $jumlahLokasi   = Lokasi::count();
         $jumlahUser     = User::count();
+        $jumlahPeminjaman = Peminjaman::select('kode_pinjam')->distinct()->count('kode_pinjam');
 
         $kondisiBaik = BarangKondisi::where('kondisi', 'Baik')->sum('jumlah');
         $kondisiRusakRingan = BarangKondisi::where('kondisi', 'Rusak Ringan')->sum('jumlah');
@@ -32,6 +34,7 @@ class DashboardController extends Controller
             'jumlahKategori',
             'jumlahLokasi',
             'jumlahUser',
+            'jumlahPeminjaman', // tambahkan ini juga
             'kondisiBaik',
             'kondisiRusakRingan',
             'kondisiRusakBerat',

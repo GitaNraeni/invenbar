@@ -12,14 +12,16 @@ class Peminjaman extends Model
     protected $table = 'peminjamans'; 
 
     protected $fillable = [
-        'kode_pinjam',
-        'nama_peminjam',
-        'barang_id',
-        'jumlah',
-        'tgl_pinjam',
-        'tgl_kembali',
-        'status',
-    ];
+    'kode_pinjam',
+    'nama_peminjam',
+    'no_telepon',
+    'barang_id',
+    'jumlah',
+    'tgl_pinjam',
+    'tgl_kembali_rencana',
+    'tgl_kembali',
+    'status',
+];
 
     public function barang()
     {
